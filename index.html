@@ -123,12 +123,8 @@
 			for (var i = 0; i < 3; i++) {
 				if (arr_ids[i] != -1) {
 //					alert(i);
-					for (var k = 0; k < 3; k++) {
-						document.getElementById(arr_btn_cand_card[k]).style.visibility = 'hidden';
-					}
-					
+					document.getElementById(arr_btn_cand_card[i]).style.visibility = 'hidden';
 					alert("Share the result");
-
 					
 					if (arr_ids[i] < 6) {
 						alert("A liberal policy is enacted.");
