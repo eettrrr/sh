@@ -1,21 +1,167 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
 <body>
-<script type="text/javascript">
-  document.write("Hello World!");
-  var result = Math.floor(Math.random() * 10) + 1;
-  document.write(result);
-  
-  var arr_ex=new Array();
-  var num_of_cards=17;
-  for(var i=0; i<num_of_cards; i++)
-  {
-    arr_ex[i]=Math.floor(Math.random() * 10) + 1;
-  }
-  for(var i=0; i<num_of_cards; i++)
-  {
-    document.write(arr_ex[i]);
-  }
-  
-</script>
+	We have <input type="button" id="remain_card_number" value="17" /> policy cards. <br><br><br><br>
+
+	<input type="button" id="btn_blue_cards" value="0" /> Liberal policy (or policies) and
+	<br>
+	<input type="button" id="btn_red_cards" value="0" /> Fascist policy (or policies) are enacted.
+	<br>
+	<br>
+	<br>
+	<br>
+	<input type="button" id="btn_policy" value="Start a legislative session"
+		onClick="func_policy()" />
+	<br>
+	<br>
+	<br>
+	<br>
+	<input type="button" id="btn_cand_card_0" onClick="func_cand_card(0);" />
+	<input type="button" id="btn_cand_card_1" onClick="func_cand_card(1);" />
+	<input type="button" id="btn_cand_card_2" onClick="func_cand_card(2);" />
 </body>
+
+<script>
+
+	var m_count = 3;
+	var m_remain_cards=17;
+	var used_cards = new Array();
+	for (var i = 0; i < 17; i++) {
+		used_cards[i] = 0;
+	}
+
+	var removed_cards = new Array();
+	for (var i = 0; i < 17; i++) {
+		removed_cards[i] = 0;
+	}
+
+	var arr_ids = new Array();
+
+	var arr_btn_cand_card = new Array();
+	arr_btn_cand_card[0] = 'btn_cand_card_0';
+	arr_btn_cand_card[1] = 'btn_cand_card_1';
+	arr_btn_cand_card[2] = 'btn_cand_card_2';
+	
+	for (var i = 0; i < 3; i++) {
+		document.getElementById(arr_btn_cand_card[i]).style.visibility = 'hidden';
+	}
+
+	function func_policy() {
+		if (m_remain_cards<3){
+			m_remain_cards=0;
+			alert("Shuffle the discard pile");
+			
+			for (var i = 0; i < 17; i++) {
+				if(removed_cards[i]==0)	{
+					used_cards[i]=0;
+					m_remain_cards++;
+				}
+			}
+			document.getElementById('remain_card_number').value = String(m_remain_cards);
+		}
+		
+		alert("Make sure President look in secret.")
+			
+			
+
+		for (var i = 0; i < 3; i++) {
+			document.getElementById(arr_btn_cand_card[i]).style.visibility = 'visible';
+		}
+		//		alert("here");
+
+		for (var i = 0; i < 3; i++) {
+			var m_gen = Math.floor(Math.random() * (17));
+			while (used_cards[m_gen] == 1) {
+				m_gen = Math.floor(Math.random() * (17));
+			}
+			used_cards[m_gen] = 1;
+			arr_ids[i] = m_gen;
+
+			if (m_gen < 6) // blue cards
+			{
+				document.getElementById(arr_btn_cand_card[i]).value = 'Liberal policy';
+			} else {
+				document.getElementById(arr_btn_cand_card[i]).value = 'Fascist policy';
+			}
+		}
+		//		alert("hi");
+		
+		//alert("used_cards:\n0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16\n"+
+				//used_cards[0]+" "+
+				//used_cards[1]+" "+
+				//used_cards[2]+" "+
+				//used_cards[3]+" "+
+				//used_cards[4]+" "+
+				//used_cards[5]+" "+
+				//used_cards[6]+" "+
+				//used_cards[7]+" "+
+				//used_cards[8]+" "+
+				//used_cards[9]+" "+
+				//used_cards[10]+"  "+
+				//used_cards[11]+"  "+
+				//used_cards[12]+"  "+
+				//used_cards[13]+"  "+
+				//used_cards[14]+"  "+
+				//used_cards[15]+"  "+
+				//used_cards[16]
+				//);
+		m_remain_cards=m_remain_cards-3;
+		
+		//alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
+	}
+
+	function func_cand_card(x) {
+		document.getElementById(arr_btn_cand_card[x]).style.visibility = 'hidden';
+		arr_ids[x] = -1;
+//		alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
+		m_count = m_count - 1;
+		if (m_count == 1) {
+			for (var i = 0; i < 3; i++) {
+				if (arr_ids[i] != -1) {
+//					alert(i);
+					for (var k = 0; k < 3; k++) {
+						document.getElementById(arr_btn_cand_card[k]).style.visibility = 'hidden';
+					}
+					
+					if (arr_ids[i] < 6) {
+						alert("A liberal policy is enacted.");
+						var temp = Number(document
+								.getElementById('btn_blue_cards').value);
+						document.getElementById('btn_blue_cards').value = String(temp + 1);
+						
+						if (temp==4){
+							alert("Players on the Liberal team win!")
+						}
+							
+					} else {
+						alert("A fascist policy is enacted.");
+						var temp = Number(document
+								.getElementById('btn_red_cards').value);
+						document.getElementById('btn_red_cards').value = String(temp + 1);
+						
+						if (temp==5){
+							alert("Players on the Fascist team win!")
+						}
+					}
+					
+					var temp = Number(document
+							.getElementById('remain_card_number').value);
+					document.getElementById('remain_card_number').value = String(temp -3);
+					removed_cards[arr_ids[i]]=1;
+
+
+					break;
+				}
+			}
+			m_count = 3;
+		}
+
+	}
+</script>
+
 </html>
+
