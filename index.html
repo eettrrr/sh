@@ -5,6 +5,7 @@
 <title>Document</title>
 </head>
 <body>
+	<img src="select_the_number_of_players.png" style="width: auto; height: 14%; " />
 	<p style="font-size: 200%">
 	Select the number of players &nbsp; 
 	<input type="button" id="btn_player_5" value="5" style="font-size:100%" onclick="set_number_of_players(5)" /> 
@@ -219,13 +220,15 @@
 
 	}
 	function func_cand_card(x) {
+		if (m_count == 1) {
+			func_announce_result();
+			return;
+		}
 		document.getElementById(arr_btn_cand_card[x]).style.visibility = 'hidden';
 		arr_ids[x] = -1;
 //		alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
 		m_count = m_count - 1;
-		if (m_count == 1) {
-			func_announce_result();
-		}
+		
 
 	}
 </script>
