@@ -2,51 +2,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>Secret Hitler Helper</title>
 </head>
 <body>
-	<img src="select_the_number_of_players.png" style="width: auto; height: 14%; " />
-	<p style="font-size: 200%">
-	Select the number of players &nbsp; 
-	<input type="button" id="btn_player_5" value="5" style="font-size:100%" onclick="set_number_of_players(5)" /> 
-	<input type="button" id="btn_player_6" value="6" style="font-size:100%" onclick="set_number_of_players(6)" /> 
-	<input type="button" id="btn_player_7" value="7" style="font-size:100%" onclick="set_number_of_players(7)" /> 
-	<input type="button" id="btn_player_8" value="8" style="font-size:100%" onclick="set_number_of_players(8)" /> 
-	<input type="button" id="btn_player_9" value="9" style="font-size:100%" onclick="set_number_of_players(9)" /> 
-	<input type="button" id="btn_player_10" value="10" style="font-size:100%" onclick="set_number_of_players(10)" /> 
-	</p> 
+	<img src="select_the_number_of_players.png" style="width: auto; height: 14%;" />
+	<img src="5.png"  id="btn_player_5" style="width: auto; height: 14%;" onclick="set_number_of_players(5)" /> 
+	<img src="6.png"  id="btn_player_6" style="width: auto; height: 14%;" onclick="set_number_of_players(6)" /> 
+	<img src="7.png"  id="btn_player_7" style="width: auto; height: 14%;" onclick="set_number_of_players(7)" /> 
+	<img src="8.png"  id="btn_player_8" style="width: auto; height: 14%;" onclick="set_number_of_players(8)" /> 
+	<img src="9.png"  id="btn_player_9" style="width: auto; height: 14%;" onclick="set_number_of_players(9)" /> 
+	<img src="10.png"  id="btn_player_10" style="width: auto; height: 14%;" onclick="set_number_of_players(10)" /> <br>
 	
-	<p style="font-size: 200%">
+	<!--<p style="font-size: 200%">
 	We have <input type="button" id="remain_card_number" value="17" style="font-size:100%" /> policy cards.
-	</p> <br>
+	</p> <br>-->
 
-	<p style="font-size: 200%; color:blue">
-	Liberal Track <br>
+	<img src="we_have.png" style="width: auto; height: 14%;" />
+	<img src="17.png" id="remain_card_number_img" style="width: auto; height: 14%;" />
+	<img src="policy_cards.png" style="width: auto; height: 14%;" /> <br><br>
+
+	<img src="liberal_track.png" style="width: auto; height: 14%;" /> <br>
 	<img src="liberal.png" id="track_liberal_0" style="width: 14%; height: auto; visibility: hidden;" />
 	<img src="liberal.png" id="track_liberal_1" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="liberal.png" id="track_liberal_2" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="liberal.png" id="track_liberal_3" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="liberal.png" id="track_liberal_4" style="width: 14%; height: auto; visibility: hidden" /> <br>
+	<img src="liberal.png" id="track_liberal_4" style="width: 14%; height: auto; visibility: hidden" /> <br><br>
 
-	<p style="font-size: 200%; color:red">
-	Fascist Track <br>
+	<img src="fascist_track.png" style="width: auto; height: 14%;" /> 
+	<img src="fascist_track.png" style="width: auto; height: 14%; visibility: hidden;" id="img_executions" /> <br>
 	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" /> <br>
-	<p style="font-size: 200%"><input type="button" style="font-size:100%" id="btn_blue_cards" value="0" /> Liberal policy (or policies) and
+	<img src="fascist.png" id="track_fascist_1" style="width: 14%; height: auto; visibility: hidden" />
+	<img src="fascist.png" id="track_fascist_2" style="width: 14%; height: auto; visibility: hidden" />
+	<img src="fascist.png" id="track_fascist_3" style="width: 14%; height: auto; visibility: hidden" />
+	<img src="fascist.png" id="track_fascist_4" style="width: 14%; height: auto; visibility: hidden" />
+	<img src="fascist.png" id="track_fascist_5" style="width: 14%; height: auto; visibility: hidden" /> <br><br><br>
+	<img src="0.png" style="width: auto; height: 14%;" id="img_btn_blue_cards" />
+	<img src="liberal_policies.png" style="width: auto; height: 14%;" /> 
 	<br>
-	<input type="button" style="font-size:100%" id="btn_red_cards" value="0" /> Fascist policy (or policies) are enacted.</p>
+	
+	<img src="0.png" style="width: auto; height: 14%;" id="img_btn_red_cards" />
+	<img src="fascist_policies.png" style="width: auto; height: 14%;" /> 
 	<br>
 	<p style="font-size: 200%">
 	<input type="button" id="btn_policy"   value="Start a legislative session" style="font-size:100%; width:50%"
 		onClick="func_policy()" /></p>
 	<br>
-	<br>
-	<br>
-	<br>
+	<img id="img_command" style="width: auto; height: 14%; visibility: hidden" /><br>
 	<img  id="btn_cand_card_0" style="width: 30%; height: auto;" onClick="func_cand_card(0);" />
 	<img  id="btn_cand_card_1" style="width: 30%; height: auto;" onClick="func_cand_card(1);" />
 	<img  id="btn_cand_card_2" style="width: 30%; height: auto;" onClick="func_cand_card(2);" />
@@ -54,6 +55,26 @@
 
 <script>
 
+	var arr_executives=new Array(new Array(5),new Array(5),new Array(5));
+	arr_executives[0][0]=arr_executives[0][1]='nothing.png';
+	arr_executives[0][2]='policy_peek.png';
+	arr_executives[0][3]='execution.png';
+	arr_executives[0][4]='veto_power.png';
+
+	arr_executives[1][0]='nothing.png';
+	arr_executives[1][1]='investigate_loyalty.png';
+	arr_executives[1][2]='call_speacial.png';
+	arr_executives[1][3]='execution.png';
+	arr_executives[1][4]='veto_power.png';
+
+	arr_executives[2][0]='investigate_loyalty.png';
+	arr_executives[2][1]='investigate_loyalty.png';
+	arr_executives[2][2]='call_speacial.png';
+	arr_executives[2][3]='execution.png';
+	arr_executives[2][4]='veto_power.png';
+
+	var number_of_red_cards=0;
+	var number_of_blud_cards=0;
 	var arr_liberal_track=new Array();
 	var arr_fascist_track=new Array();
 
@@ -69,8 +90,28 @@
 	arr_fascist_track[3]='track_fascist_3';
 	arr_fascist_track[4]='track_fascist_4';
 	arr_fascist_track[5]='track_fascist_5';
+
+	var arr_numbers=new Array();
+	arr_numbers[0]='0.png';
+	arr_numbers[1]='1.png';
+	arr_numbers[2]='2.png';
+	arr_numbers[3]='3.png';
+	arr_numbers[4]='4.png';
+	arr_numbers[5]='5.png';
+	arr_numbers[6]='6.png';
+	arr_numbers[7]='7.png';
+	arr_numbers[8]='8.png';
+	arr_numbers[9]='9.png';
+	arr_numbers[10]='10.png';
+	arr_numbers[11]='11.png';
+	arr_numbers[12]='12.png';
+	arr_numbers[13]='13.png';
+	arr_numbers[14]='14.png';
+	arr_numbers[15]='15.png';
+	arr_numbers[16]='16.png';
+	arr_numbers[17]='17.png';
 	
-	var m_number_of_player;
+	var m_number_of_player=-1;
 	var m_count = 3;
 	var m_remain_cards=17;
 	var used_cards = new Array();
@@ -103,15 +144,32 @@
 		arr_temp[3]='btn_player_8';
 		arr_temp[4]='btn_player_9';
 		arr_temp[5]='btn_player_10';
-		m_number_of_player=x;
+		m_number_of_player=Math.floor((x-5)/2);
 		for (var index = 0; index < 6; index++) {
 			if (x-5!=index)	{
 				document.getElementById(arr_temp[index]).style.display="none";
 			}		
 		}
+		document.getElementById('img_executions').src=arr_executives[m_number_of_player][0];
+		document.getElementById('img_executions').style.visibility="visible";
 	}	
 
 	function func_policy() {
+		if (m_number_of_player<0)
+		{
+			alert("Select the number of players!");
+			return;
+		}
+		if (m_count!=3)
+		{
+			alert("Select a policy card!");
+			return;
+
+		}
+		if (number_of_red_cards>=3)
+		{
+			alert("Check if the Chancellor is Hitler")
+		}
 		if (m_remain_cards<3){
 			m_remain_cards=0;
 			alert("Shuffle the discard pile");
@@ -122,11 +180,19 @@
 					m_remain_cards++;
 				}
 			}
-			document.getElementById('remain_card_number').value = String(m_remain_cards);
+//			alert(m_remain_cards);
+
+//			document.getElementById('remain_card_number').value = String(m_remain_cards);
+//			alert(m_remain_cards);
+
+			document.getElementById('remain_card_number_img').src = arr_numbers[m_remain_cards];
+			
 		}
 		
 		alert("Make sure President look in secret.")
 		
+		document.getElementById('img_command').style.visibility='visible';
+		document.getElementById('img_command').src='select_discarded_card.png';
 			
 
 		for (var i = 0; i < 3; i++) {
@@ -177,45 +243,61 @@
 
 	function func_announce_result()
 	{
+//		alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
 		for (var i = 0; i < 3; i++) {
 				if (arr_ids[i] != -1) {
-//					alert(i);
 					document.getElementById(arr_btn_cand_card[i]).style.visibility = 'hidden';
 					
 					if (arr_ids[i] < 6) {
-						var temp = Number(document
-								.getElementById('btn_blue_cards').value);
-						document.getElementById('btn_blue_cards').value = String(temp + 1);
-						document.getElementById(arr_liberal_track[temp]).style.visibility='visible';
+//						alert("li");
+						// var temp = Number(document
+						// 		.getElementById('btn_blue_cards').value);
+						// document.getElementById('btn_blue_cards').value = String(temp + 1);
+//						alert("temp:"+temp);
+						document.getElementById(arr_liberal_track[number_of_blud_cards]).style.visibility='visible';
+						number_of_blud_cards++;
+						
+						document.getElementById('img_btn_blue_cards').src=arr_numbers[number_of_blud_cards];
 
 						alert("A liberal policy is enacted.");
 
-						if (temp==4){
+						if (number_of_blud_cards==5){
 							alert("Players on the Liberal team win!")
 						}
 							
 					} else {
-						var temp = Number(document
-								.getElementById('btn_red_cards').value);
-						document.getElementById('btn_red_cards').value = String(temp + 1);
-						document.getElementById(arr_fascist_track[temp]).style.visibility='visible';
+//						alert("fa");
+//						alert("temp:"+temp);
+//						alert(arr_fascist_track[temp]);
+						document.getElementById(arr_fascist_track[number_of_red_cards]).style.visibility='visible';
+						number_of_red_cards++;
+						
+						document.getElementById('img_btn_red_cards').src=arr_numbers[number_of_red_cards];
 
 						alert("A fascist policy is enacted.");
 
-						if (temp==5){
+						document.getElementById('img_executions').src=arr_executives[m_number_of_player][number_of_red_cards];
+
+						if (number_of_red_cards==6){
 							alert("Players on the Fascist team win!")
 						}
 					}
+
+//					alert(i);
 					
-					var temp = Number(document
-							.getElementById('remain_card_number').value);
-					document.getElementById('remain_card_number').value = String(temp -3);
+					// var temp = m_remain_cards;
+					//Number(document
+					//		.getElementById('remain_card_number').value);
+					//document.getElementById('remain_card_number').value = String(temp -3);
+					document.getElementById('remain_card_number_img').src = arr_numbers[m_remain_cards];
+
 					removed_cards[arr_ids[i]]=1;
 
 
 					break;
 				}
 			}
+			document.getElementById('img_command').style.visibility='hidden';
 			m_count = 3;
 
 	}
@@ -228,7 +310,11 @@
 		arr_ids[x] = -1;
 //		alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
 		m_count = m_count - 1;
-		
+
+		if (m_count==1)
+		{
+			document.getElementById('img_command').src='select_enacted_card.png';
+		}
 
 	}
 </script>
