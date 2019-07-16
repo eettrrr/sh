@@ -13,34 +13,31 @@
 	<input type="button" id="btn_player_8" value="8" style="font-size:100%" onclick="set_number_of_players(8)" /> 
 	<input type="button" id="btn_player_9" value="9" style="font-size:100%" onclick="set_number_of_players(9)" /> 
 	<input type="button" id="btn_player_10" value="10" style="font-size:100%" onclick="set_number_of_players(10)" /> 
-	</p> <br>
+	</p> 
 	
 	<p style="font-size: 200%">
 	We have <input type="button" id="remain_card_number" value="17" style="font-size:100%" /> policy cards.
 	</p> <br>
 
-	<p style="font-size: 200%">
-	Liberal Track <br></p>
+	<p style="font-size: 200%; color:blue">
+	Liberal Track <br>
 	<img src="liberal.png" id="track_liberal_0" style="width: 14%; height: auto; visibility: hidden;" />
 	<img src="liberal.png" id="track_liberal_1" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="liberal.png" id="track_liberal_2" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="liberal.png" id="track_liberal_3" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="liberal.png" id="track_liberal_4" style="width: 14%; height: auto; visibility: hidden" /> <br><br>
+	<img src="liberal.png" id="track_liberal_4" style="width: 14%; height: auto; visibility: hidden" /> <br>
 
-	<p style="font-size: 200%">
-	Fascist Track </p><br>
+	<p style="font-size: 200%; color:red">
+	Fascist Track <br>
 	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" />
-	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" /> <br><br>
+	<img src="fascist.png" id="track_fascist_0" style="width: 14%; height: auto; visibility: hidden" /> <br>
 	<p style="font-size: 200%"><input type="button" style="font-size:100%" id="btn_blue_cards" value="0" /> Liberal policy (or policies) and
 	<br>
 	<input type="button" style="font-size:100%" id="btn_red_cards" value="0" /> Fascist policy (or policies) are enacted.</p>
-	<br>
-	<br>
-	<br>
 	<br>
 	<p style="font-size: 200%">
 	<input type="button" id="btn_policy"   value="Start a legislative session" style="font-size:100%; width:50%"
@@ -194,25 +191,26 @@
 				if (arr_ids[i] != -1) {
 //					alert(i);
 					document.getElementById(arr_btn_cand_card[i]).style.visibility = 'hidden';
-					alert("Share the result");
 					
 					if (arr_ids[i] < 6) {
-						alert("A liberal policy is enacted.");
 						var temp = Number(document
 								.getElementById('btn_blue_cards').value);
 						document.getElementById('btn_blue_cards').value = String(temp + 1);
 						document.getElementById(arr_liberal_track[temp]).style.visibility='visible';
-						
+
+						alert("A liberal policy is enacted.");
+
 						if (temp==4){
 							alert("Players on the Liberal team win!")
 						}
 							
 					} else {
-						alert("A fascist policy is enacted.");
 						var temp = Number(document
 								.getElementById('btn_red_cards').value);
 						document.getElementById('btn_red_cards').value = String(temp + 1);
 						document.getElementById(arr_fascist_track[temp]).style.visibility='visible';
+
+						alert("A fascist policy is enacted.");
 
 						if (temp==5){
 							alert("Players on the Fascist team win!")
