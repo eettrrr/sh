@@ -20,9 +20,9 @@
 	<br>
 	<br>
 	<br>
-	<input type="button" id="btn_cand_card_0" onClick="func_cand_card(0);" />
-	<input type="button" id="btn_cand_card_1" onClick="func_cand_card(1);" />
-	<input type="button" id="btn_cand_card_2" onClick="func_cand_card(2);" />
+	<img  id="btn_cand_card_0" onClick="func_cand_card(0);" />
+	<img  id="btn_cand_card_1" onClick="func_cand_card(1);" />
+	<img  id="btn_cand_card_2" onClick="func_cand_card(2);" />
 </body>
 
 <script>
@@ -65,7 +65,7 @@
 		}
 		
 		alert("Make sure President look in secret.")
-			
+		
 			
 
 		for (var i = 0; i < 3; i++) {
@@ -83,9 +83,9 @@
 
 			if (m_gen < 6) // blue cards
 			{
-				document.getElementById(arr_btn_cand_card[i]).value = 'Liberal policy';
+				document.getElementById(arr_btn_cand_card[i]).src = 'liberal.png';
 			} else {
-				document.getElementById(arr_btn_cand_card[i]).value = 'Fascist policy';
+				document.getElementById(arr_btn_cand_card[i]).src = 'fascist.png';
 			}
 		}
 		//		alert("hi");
@@ -114,6 +114,13 @@
 		//alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
 	}
 
+	function func_cand_img() {
+		alert("here");
+		document.getElementById('img_cand_card_0').style.visibility = 'hidden';
+		alert("here");
+
+	}
+
 	function func_cand_card(x) {
 		document.getElementById(arr_btn_cand_card[x]).style.visibility = 'hidden';
 		arr_ids[x] = -1;
@@ -124,6 +131,7 @@
 				if (arr_ids[i] != -1) {
 //					alert(i);
 					document.getElementById(arr_btn_cand_card[i]).style.visibility = 'hidden';
+					alert("Share the result");
 					
 					if (arr_ids[i] < 6) {
 						alert("A liberal policy is enacted.");
