@@ -174,20 +174,9 @@
 		//alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
 	}
 
-	function func_cand_img() {
-		alert("here");
-		document.getElementById('img_cand_card_0').style.visibility = 'hidden';
-		alert("here");
-
-	}
-
-	function func_cand_card(x) {
-		document.getElementById(arr_btn_cand_card[x]).style.visibility = 'hidden';
-		arr_ids[x] = -1;
-//		alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
-		m_count = m_count - 1;
-		if (m_count == 1) {
-			for (var i = 0; i < 3; i++) {
+	function func_announce_result()
+	{
+		for (var i = 0; i < 3; i++) {
 				if (arr_ids[i] != -1) {
 //					alert(i);
 					document.getElementById(arr_btn_cand_card[i]).style.visibility = 'hidden';
@@ -227,6 +216,15 @@
 				}
 			}
 			m_count = 3;
+
+	}
+	function func_cand_card(x) {
+		document.getElementById(arr_btn_cand_card[x]).style.visibility = 'hidden';
+		arr_ids[x] = -1;
+//		alert(arr_ids[0]+","+arr_ids[1]+","+arr_ids[2]);
+		m_count = m_count - 1;
+		if (m_count == 1) {
+			func_announce_result();
 		}
 
 	}
