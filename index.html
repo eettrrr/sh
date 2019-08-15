@@ -17,57 +17,61 @@
 </head>
 
 <body>
-	<p> hihihihi </p>
-	<h2> this is h2 </h2>
-	<h1> this is h1 </h1>
-	<h3> this is h3 </h3>
-	<h4>this is h4</h4> 
-	<h5>this is h5</h5>
-	<h6>this is h6</h6>
 	
-	<img src="select_the_number_of_players.png" style="width: auto; height: auto;" />
+	<h1>The game for <span id="player_number_h1"> Select the number of players.</span>
+		players.
+	</h1>
+	
+	<!--
 	<img src="5.png" id="btn_player_5" style="width: auto; height: auto;" onclick="set_number_of_players(5)" />
 	<img src="6.png" id="btn_player_6" style="width: auto; height: auto;" onclick="set_number_of_players(6)" />
 	<img src="7.png" id="btn_player_7" style="width: auto; height: auto;" onclick="set_number_of_players(7)" />
 	<img src="8.png" id="btn_player_8" style="width: auto; height: auto;" onclick="set_number_of_players(8)" />
 	<img src="9.png" id="btn_player_9" style="width: auto; height: auto;" onclick="set_number_of_players(9)" />
-	<img src="10.png" id="btn_player_10" style="width: auto; height: auto;" onclick="set_number_of_players(10)" /> <br>
+	<img src="10.png" id="btn_player_10" style="width: auto; height: auto;" onclick="set_number_of_players(10)" /> <br>-->
 
 	<!--<p style="font-size: 200%">
 	We have <input type="button" id="remain_card_number" value="17" style="font-size:100%" /> policy cards.
 	</p> <br>-->
 
-	<img src="we_have.png" style="width: auto; height: auto;" />
-	<img src="17.png" id="remain_card_number_img" style="width: auto; height: auto;" />
-	<img src="policy_cards.png" style="width: auto; height: auto;" /> <br><br>
+	<h1> We have 
+	<!--<img src="17.png" id="remain_card_number_img" style="width: auto; height: auto;" />-->
+	<span id="remain_card_number_h1">17</span>
+    polycy cards </h1>
 
-	<img src="liberal_track.png" style="width: auto; height: auto;" /> <br>
+	<span style="color:blue"><h1>Liberal Track</h1></span>
+
 	<img src="liberal.png" id="track_liberal_0" style="width: 13%; height: auto; visibility: hidden;" />
 	<img src="liberal.png" id="track_liberal_1" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="liberal.png" id="track_liberal_2" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="liberal.png" id="track_liberal_3" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="liberal.png" id="track_liberal_4" style="width: 13%; height: auto; visibility: hidden" /> <br><br>
 
-	<img src="fascist_track.png" style="width: auto; height: auto;" />
-	<img src="fascist_track.png" style="width: auto; height: auto; visibility: hidden;" id="img_executions" /> <br>
+	<span style="color:red"><h1>Fascist Track</h1>
+		<h2>(next executive action : <span id="h1_executions"></span>)</h2>
+	</span>
+	<!--<img src="fascist_track.png" style="width: auto; height: auto; visibility: hidden;" id="img_executions" /> <br>-->
 	<img src="fascist.png" id="track_fascist_0" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_1" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_2" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_3" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_4" style="width: 13%; height: auto; visibility: hidden" />
 	<img src="fascist.png" id="track_fascist_5" style="width: 13%; height: auto; visibility: hidden" /> <br><br><br>
-	<img src="0.png" style="width: auto; height: auto;" id="img_btn_blue_cards" />
-	<img src="liberal_policies.png" style="width: auto; height: auto;" />
-	<br>
-
-	<img src="0.png" style="width: auto; height: auto;" id="img_btn_red_cards" />
-	<img src="fascist_policies.png" style="width: auto; height: auto;" />
-	<br>
+	<h1> 
+		<span id="h1_blue_cards">0</span>
+		<!--<img src="0.png" style="width: auto; height: auto;" id="img_btn_blue_cards" />-->
+	liberal <span id="h1_blue_policy">policy</span> and </h1>
+	<h1>
+			<span id="h1_red_cards">0</span>
+		<!--<img src="0.png" style="width: auto; height: auto;" id="img_btn_red_cards" />-->
+	fascist <span id="h1_red_policy">policy</span> are enacted.
+	</h1>
+	
 	<p style="font-size: 200%">
-		<input type="button" id="btn_policy" value="Start a legislative session" style="font-size:100%; width:50%"
+		<input type="button" id="btn_policy" value="Start a legislative session" style="font-size:100%; "
 			onClick="func_policy()" /></p>
-	<br>
-	<img id="img_command" style="width: auto; height: auto; visibility: hidden" /><br>
+	<h2 id="h1_command"></h2>
+	<!--<img id="img_command" style="width: auto; height: auto; visibility: hidden" /><br>-->
 	<img id="btn_cand_card_0" style="width: 30%; height: auto;" onClick="func_cand_card(0);" />
 	<img id="btn_cand_card_1" style="width: 30%; height: auto;" onClick="func_cand_card(1);" />
 	<img id="btn_cand_card_2" style="width: 30%; height: auto;" onClick="func_cand_card(2);" />
@@ -75,6 +79,11 @@
 
 <script>
 
+	var temp_players=prompt("select the number")
+	m_number_of_player = Math.floor((temp_players - 5) / 2);
+	document.getElementById("player_number_h1").innerHTML=temp_players
+
+	
 	var arr_executives = new Array(new Array(5), new Array(5), new Array(5));
 	arr_executives[0][0] = arr_executives[0][1] = 'nothing.png';
 	arr_executives[0][2] = 'policy_peek.png';
@@ -92,6 +101,31 @@
 	arr_executives[2][2] = 'call_speacial.png';
 	arr_executives[2][3] = 'execution.png';
 	arr_executives[2][4] = 'veto_power.png';
+
+	var arr_executives_h1 = new Array(new Array(5), new Array(5), new Array(5));
+
+	arr_executives_h1[0][0] = arr_executives_h1[0][1] = 'Nothing';
+	arr_executives_h1[0][2] = 'Policy Peek';
+	arr_executives_h1[0][3] = 'Execution';
+	arr_executives_h1[0][4] = 'Execution with Unlocking Veto Power';
+
+	arr_executives_h1[1][0] = 'Nothing';
+	arr_executives_h1[1][1] = 'Investigate Loyalty';
+	arr_executives_h1[1][2] = 'Call Special Election';
+	arr_executives_h1[1][3] = 'Execution';
+	arr_executives_h1[1][4] = 'Execution with Unlocking Veto Power';
+
+	arr_executives_h1[2][0] = 'Investigate Loyalty';
+	arr_executives_h1[2][1] = 'Investigate Loyalty';
+	arr_executives_h1[2][2] = 'Call Special Election';
+	arr_executives_h1[2][3] = 'Execution';
+	arr_executives_h1[2][4] = 'Execution with Unlocking Veto Power';
+
+	//document.getElementById('img_executions').src = arr_executives[m_number_of_player][0];
+	document.getElementById('h1_executions').innerHTML=arr_executives_h1[m_number_of_player][0];
+	//document.getElementById('img_executions').style.visibility = "visible";
+
+
 
 	var number_of_red_cards = 0;
 	var number_of_blud_cards = 0;
@@ -131,7 +165,6 @@
 	arr_numbers[16] = '16.png';
 	arr_numbers[17] = '17.png';
 
-	var m_number_of_player = -1;
 	var m_count = 3;
 	var m_remain_cards = 17;
 	var used_cards = new Array();
@@ -155,23 +188,26 @@
 		document.getElementById(arr_btn_cand_card[i]).style.visibility = 'hidden';
 	}
 
-	function set_number_of_players(x) {
-		var arr_temp = new Array();
-		arr_temp[0] = 'btn_player_5';
-		arr_temp[1] = 'btn_player_6';
-		arr_temp[2] = 'btn_player_7';
-		arr_temp[3] = 'btn_player_8';
-		arr_temp[4] = 'btn_player_9';
-		arr_temp[5] = 'btn_player_10';
-		m_number_of_player = Math.floor((x - 5) / 2);
-		for (var index = 0; index < 6; index++) {
-			if (x - 5 != index) {
-				document.getElementById(arr_temp[index]).style.display = "none";
-			}
-		}
-		document.getElementById('img_executions').src = arr_executives[m_number_of_player][0];
-		document.getElementById('img_executions').style.visibility = "visible";
-	}
+	// function set_number_of_players(x) {
+
+	// 	alert("pused")
+
+	// 	var arr_temp = new Array();
+	// 	arr_temp[0] = 'btn_player_5';
+	// 	arr_temp[1] = 'btn_player_6';
+	// 	arr_temp[2] = 'btn_player_7';
+	// 	arr_temp[3] = 'btn_player_8';
+	// 	arr_temp[4] = 'btn_player_9';
+	// 	arr_temp[5] = 'btn_player_10';
+	// 	m_number_of_player = Math.floor((x - 5) / 2);
+	// 	for (var index = 0; index < 6; index++) {
+	// 		if (x - 5 != index) {
+	// 			document.getElementById(arr_temp[index]).style.display = "none";
+	// 		}
+	// 	}
+	// 	document.getElementById('img_executions').src = arr_executives[m_number_of_player][0];
+	// 	document.getElementById('img_executions').style.visibility = "visible";
+	// }
 
 	function func_policy() {
 		if (m_number_of_player < 0) {
@@ -201,14 +237,18 @@
 			//			document.getElementById('remain_card_number').value = String(m_remain_cards);
 			//			alert(m_remain_cards);
 
-			document.getElementById('remain_card_number_img').src = arr_numbers[m_remain_cards];
+			//document.getElementById('remain_card_number_img').src = arr_numbers[m_remain_cards];
+			document.getElementById("remain_card_number_h1").innerHTML=m_remain_cards;
+			
+
 
 		}
 
 		alert("Make sure President look in secret.")
 
-		document.getElementById('img_command').style.visibility = 'visible';
-		document.getElementById('img_command').src = 'select_discarded_card.png';
+		//document.getElementById('img_command').style.visibility = 'visible';
+		//document.getElementById('img_command').src = 'select_discarded_card.png';
+		document.getElementById('h1_command').innerHTML = 'Select a card to be discarded.';
 
 
 		for (var i = 0; i < 3; i++) {
@@ -272,7 +312,13 @@
 					document.getElementById(arr_liberal_track[number_of_blud_cards]).style.visibility = 'visible';
 					number_of_blud_cards++;
 
-					document.getElementById('img_btn_blue_cards').src = arr_numbers[number_of_blud_cards];
+//					document.getElementById('img_btn_blue_cards').src = arr_numbers[number_of_blud_cards];
+					document.getElementById('h1_blue_cards').innerHTML = number_of_blud_cards;
+					if (number_of_blud_cards>1)
+					{
+						document.getElementById('h1_blue_policy').innerHTML = "policies";
+					}
+
 
 					alert("A liberal policy is enacted.");
 
@@ -287,11 +333,17 @@
 					document.getElementById(arr_fascist_track[number_of_red_cards]).style.visibility = 'visible';
 					number_of_red_cards++;
 
-					document.getElementById('img_btn_red_cards').src = arr_numbers[number_of_red_cards];
+//					document.getElementById('img_btn_red_cards').src = arr_numbers[number_of_red_cards];
+					document.getElementById('h1_red_cards').innerHTML = number_of_red_cards;
+					if (number_of_red_cards>1)
+					{
+						document.getElementById('h1_red_policy').innerHTML = "policies";
+					}
 
 					alert("A fascist policy is enacted.");
 
-					document.getElementById('img_executions').src = arr_executives[m_number_of_player][number_of_red_cards];
+//					document.getElementById('img_executions').src = arr_executives[m_number_of_player][number_of_red_cards];
+					document.getElementById('h1_executions').innerHTML=arr_executives_h1[m_number_of_player][number_of_red_cards];
 
 					if (number_of_red_cards == 6) {
 						alert("Players on the Fascist team win!")
@@ -304,7 +356,9 @@
 				//Number(document
 				//		.getElementById('remain_card_number').value);
 				//document.getElementById('remain_card_number').value = String(temp -3);
-				document.getElementById('remain_card_number_img').src = arr_numbers[m_remain_cards];
+				//document.getElementById('remain_card_number_img').src = arr_numbers[m_remain_cards];
+				document.getElementById("remain_card_number_h1").innerHTML=m_remain_cards;
+
 
 				removed_cards[arr_ids[i]] = 1;
 
@@ -312,7 +366,8 @@
 				break;
 			}
 		}
-		document.getElementById('img_command').style.visibility = 'hidden';
+		//document.getElementById('img_command').style.visibility = 'hidden';
+		document.getElementById('h1_command').innerHTML = '';
 		m_count = 3;
 
 	}
@@ -327,7 +382,8 @@
 		m_count = m_count - 1;
 
 		if (m_count == 1) {
-			document.getElementById('img_command').src = 'select_enacted_card.png';
+			//document.getElementById('img_command').src = 'select_enacted_card.png';
+			document.getElementById('h1_command').innerHTML = 'Select the card to be enacted.';
 		}
 
 	}
