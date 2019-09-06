@@ -1,0 +1,99 @@
+DS Data 분류 체계의 이해
+-	분류체계의 정의 (LV1 ~ LV4)
+	레벨 1: Domain (DS 부문 9대 프로세스)
+	예: 개발(D), 제조(M), 인프라(F), 물류(L), 마케팅(B), 판매(S), 서비스(C), 경영(E), 구매(P)
+	레벨 2: Area (도메인의 오브젝트(행위주체, 실물)가 소속된 업무 영역)
+	예: FAB 계측 (M02), 생산 계획 (M01), FAB 설비 (M03)
+	레벨 3: Class (영역의 오브젝트가 단위(유사) 업무 활동으로 발생하는 정보 묶음 (Type의 묶음), Object + Action (행위나 연관 대상))
+	예: Wafer 계측, Defect, NPW
+	레벨 4: Type (단위(유사) 업무 활동으로 발생하여 가치를 창출할 수 있는 최소 정보 단위 (=종), 클래스가 데이터 적재 기준 1개 이상의 테이블(이나 파일)이면, 타입으로 세분화함)
+	예: CD, THK, Def.Raw, Def.Chip. Def.Sum
+	Exclusivity: 독립적 사용 가능, 상호 배타적
+	Reusability:  타 업무와 연계하여 재사용 가능
+	Value: 데이터로서 적재/활용을 통한 가치 창출이 가능
+	Data type은 병합, 수정, 삭제될 수 있음
+
+빅데이터 아키텍처의 이해
+-	개요
+	Volume: Hadoop, NoSQL 사용, 제품 수 증가 및 공정 미세화
+	Variety: 전체 9대 프로세스 데이터 통합 적재
+	Velocity: 생성부터 적재 / 전처리까지 수분~수십분 내 처리 가능
+-	DS의 경쟁력: 수율 향상, 불량원인분석, 설비 이상 감지, 수요 예측
+-	파이프라인
+	DS data (데이터원천): DB System, File System 등 DS IT 자원을 활용하여 보관중인 데이터 자산
+	Data Lake (데이터적재): 하둡 에코시스템을 기분으로 구축된 대용량 데이터 보관 인프라, 데이터의 빠른 분석 및 데이터 Provisioning (관리 운용) 서비스 가능
+	전처리  기준정보조합  압축  HDFS, NoSQL 기반 적재
+	Data Warehouse (서비스): Data Lake에 축적된 다양한 자원을 빠르게 추출/변환/통합, 비즈니스 목적에 맞도록 최적화된 DB 테이블로 저장된 DB 시스템
+	분석 어플리케이션 서비스, 데이터 API 서비스
+-	분석 어플리케이션 종류
+	정형 분석: 특정 데이터와 분석 로직으로 결과 도출, 엔지니어링 상시 업무 자동화
+	비정형 분석: 다양한 데이터를 사용하여 목적에 맞게 분석 수행,. 사용자 자율 분석에 용이
+	예: 주피터랩, 파이참, 웹_데스크탑, 알, 셀카, 스팟파이어, 데이터익스트랙터
+-	HPC 플랫폼 역할 (R 및 Python을 활용한 고급 분석, App 개발/배포/공유 환경 제공)
+	데이터 저장소: Lake 및 분석용 DW에 저장된 반도체 데이터
+	데이터 공급 서비스 (API): R 및 Python에 활용 가능한 데이터 추출 API 제공
+	Cloud 기반 분석 환경 (GPU, AI): 가상화된 자원을 활용한 고성능 데이터 분석, 다양한 머신 러닝, 딥러닝 커널 제공
+	사용자 개발 도구 (JupyterLab, Pycharm): R 및 Python을 개발할 수 있는 개발 도구 제공
+	App 배포 / 공유: 사용자가 직접 개발한 App을 배포하고 공유할 수 있는 환경 제공
+-	HPC 플랫폼 활용한 분석 앱 개발 절차
+	분석 절차 설계: 데이터 추출  데이터 전처리/가공  데이터 분석  시각화
+	R 또는 Python 기반 개발: 분석 로직 + 사용자 인터페이스
+	Web UI 개발: Shiny package (R), Dash package (Python)
+	앱 배포 및 공유
+	Web desktop을 통해 동일한 앱 사용 가능
+ 
+SELCA 활용
+-	데이터 카탈로그: 모든 사내 데이터를 신속하게 찾고 관리하며 파악할 수 있도록 도와주는 메타데이터 관리 서비스
+-	Speed Exploration & Linked data Catalog & Analysis system
+-	SELCA 활용법
+	데이터 분류체계에 의한 조회
+	MI (Metrology & Inspection): 계측이나 검사 데이터들을 의미  Area
+	용어 검색에 의한 조회
+	카탈로그 상세 검색에 의한 조회 (사용자가 데이터 명을 어느 정도 알 때 활용)
+-	제공하는 카탈로그 정보
+	메타 정보: 데이터명, 데이터의 설명, 인터페이스 주기, 보존기한, 테이블의 칼럼 정보 (칼럼명, 설명, 자료형) 등
+	샘플 정보: 해당 데이터 테이블의 샘플 데이터 (300행)
+	연계정보: 해당 데이터 테이블과 조인이 가능한 테이블의 종류와 각 연계 데이터의 카탈로그 정보 조회
+-	Advanced Analytics Modeler 기능
+	Lake 내 다양한 데이터 추출 가능
+	연계 정보를 활용한 편리한 데이터 연계 가능
+	자유도 높은 데이터 전처리
+	기본적인 통계 분석 가능
+	Join, filter, sort, function, group, ANOVA (Analysis of Variance: F분포를 이용하여 가설검정)
+	가볍고 빠른 차트 가시화
+ 
+통계 기초과정
+-	통계적 추론: 모집단의 양상을 알기 위해 통계학을 이용하여 추측하는 과정
+	모집단: 관심대상 전체를 모아둔 것
+	모집단의 변수 (X): 관심 대상의 수치적 측면
+	f(X): x의 확률분포함수, 모수: 분포함수 f(x)의 특성치
+	기본 개념
+	X ~ f(x)  추출 표본 X_1, …, X_n  통계량 \bar(X) = 1/n \Sum X_j  통계적 추론 모수 E[X]
+	통계량: 추출 표본으로부터 계산된 값  모수를 추론하는데 사용
+
+ 	 
+    
+
+ 
+Data Extractor
+-	용도 특징,
+	비정형 데이터 추출, 실시간 모니터링에 부적합
+	FLOW 작성 기능 제공
+	모든 작업은 서버에서 수행: 상시적 안정성 보장이 어려움
+-	Task
+	데이터조회 (QueryTask: 데이터를 조회하는 최소 단위), 데이터가공, 데이터입력, 데이터출력
+-	Data Extractor Site
+	동일 client로 전체 사업부에 대해서 사용 가능함
+	Query Task는 FAB, ET, EDS와 같은 데이터가 발생하는 위치에 따라 구분되어 있음
+	COMMON (기타항목), FAB (FAB관련 데이터, Tracking 이력, 계측 등), ET (ET data), EDS (EDS 테스트 데이터 및 이력, Chip data), TEST (package 테스트 관련 데이터), CUSTOMER (일반 보관기간인 1년이 지난 장기 보관 데이터)
+	Naming Rule: 소속된 위치 _ 데이터 구분 _ 데이터 레벨 _ 데이터 특성
+	FAB_PRC_LOT_TRACKING: FAB의 LOT Level 생산 Process 이력 Tracking
+	LOT level or WAFER level
+	Query Type Naming Rule: BY _ 데이터 조회기준 ON _ 데이터 범위
+	BY_STEP_FAB_PRC_LOT_TRACKING: FAB_PRC_LOT_TRACKING에 대해 step 기준으로 조회
+	EDU_EDS_DATA: EDS 진행된 데이터 조회 (Yield, Bin 등 wafer level)
+	제품별 기준에 따라 양호 판정을 받은 chip의 비율을 EDS 수율
+	Lot별 수율 데이터 추출하기에 적당한 query
+	EDU_ET_DATA: ET (DC Test) 데이터 조회 (Wafer level)
+	EDU_MET_DATA: Fab 계측 데이터 (Wafer level)
+	EDU_WIP_DATA: FAB tracking 이력 조회 (wafer level)
