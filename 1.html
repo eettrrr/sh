@@ -1,3 +1,4 @@
+					
 	모수 검정			비모수 검정	
 한 모집단	t 검정 (모평균(μ))	χ^2 검정 (모분산(σ^2))		Wilcoxon 부호 순위 검정 (중위수(θ))	
 	H0: if μ=μ_0, T (=(X-μ)/S/sqrt(n) where X: 표본평균, S^2=\Sum (X_i-X)^2/n-1) ~ t(n-1)	H0: if σ=σ_0, X (=(n-1)S^2/σ_0^2 where S^2=\Sum (X_i - X)^2/(n-1), X는 샘플 평균) ~ χ^2[n-1]		"H0: if θ=θ_0, 
@@ -10,3 +11,66 @@ W+(=\Sum S_i R_i where S_i = X_i-θ_0의 부호, R_i = |X_i-θ_0| ) ~ N[n(n+1)/4
 여러 모집단	ANOVA (모평균 차이 (μ_1,…μ_k)			Kruskal-Wallis 검정 (중위수 차이 (θ_1,…,θ_k))	
 	H0: if 모든 μ_j 가 같음, X (=MSTR/MSE where MSTR = SSTR/(k-1), MSE=SSE/(nk-k), SSTR=각 평균과 전체평균과의 차이의 각 표본수 가중 제곱합, SSE=각 그룹별 평균과의 차이 제곱합) ~F[k-1, nk-k]			H0: if 모든 θ_j 가 같음, H (=12/n(n+1) \Sum n_i(R_i-R)^2 where n_i: i번째 표본 크기, R_i: i번째 평균 통합 순위, R=(n+1)/2: 전체의 평균 통합순위) ~ \χ^2[k-1]	
 	정규성, 등분산성, 독립성			θ_j 중 다른게 있음: 오른꼬리 검정	
+	θ_j 중 다른게 있음: 오른꼬리 검정				
+					
+					
+					
+DS data 분류 체계	level 1: 도메인 - DS 부문 9대 비즈니스 프로세스 (ex 제조)				
+	level 2: Area - 도메인의 오브젝트(행위 주체, 실물)가 소속된 업무 영역 (ex Fab 계측)				
+	level 3: Class - Area의 오브젝트가 단위(유사)업무 활동으로 발생하는 정보 묶음 (Type 묶음), Object + Action (행위나 연관 대상) (ex Wafer 계측)				
+	level 4: Type: 단위(유사)업무 활동으로 발생하여 가치를 창출할 수 있는 최소 정보 단뒤 (=종), 클래스가 데이터 적재 기준 1개 이상의 테이블이나 파일이면 타입으로 세분화 함 (ex CD, THK)	Exclusivity, Resuability, Value	Data 종은 병합, 수정, 삭제 될 수 있음		
+					
+DS Data	DB system, file system 등 DS IT 자원을 활용하여 보관중인 data 자산				
+Data Lake	hadoop ecosystem을 기반으로 구축된 대용량 데이터 보관 인프라				
+Data Warehouse	Data Lake의 다양한 데이터 자원을 빠르게 추출 변환 통합 / 비즈니스 목적에 맞도록 최적화된 디비 테이블로 저장된 대용량 디비 시스템				
+					
+					
+Selca 기반 DS data catalog					
+					
+Data catalog란? 모든 사내 데이터를 신속하게 찾고 관리하며 파악할 수 있도록 도와주는 메타데이터 관리 서비스 à DS는 SELCA					
+					
+Data catalog 활용 방법					
+분류체계에 의한, 용어에 의한, 상세 검색에 의한 검색					
+					
+연관데이터 맵 à 전체 연결 상태를 볼 수 있음					
+					
+Selca 에서 제공하는 catalog 정보					
+Meta 정보 – 데이터 명, 설명, 인터페이스 주기, 보존 기간, column 정보 (자료형, 설명, column 명) 등					
+샘플 정보 – 데이터 일부 샘플해서 보여줌 (300rows)					
+연계 정보 – 연계가 가능한 테이블의 종류와 각 연계 데이터의 카탈로그 정보 조회 가능					
+					
+Selca 기반 데이터 연계 분석 활용					
+데이터 추출하고 가공한 후 간단한 분석과 차트 가시화 기능					
+1.     DS bigdata lake 내 다양한 데이터 추츨 가능					
+2.     연계 정보를 활용한 편리한 데이터 연계 가능					
+3.     자유도 높은 전처리					
+4.     통계 분석 가능 					
+5.     가볍고 빠른 차트 가시화					
+					
+Advanced analytics modeler 기능					
+					
+DS 빅데이터 아키텍처의 이해					
+Pipeline 개요					
+3V volume, variety, velocity					
+수율향상, 불량원인 분석, 설비이상 감지, 수요예측					
+					
+DS data:  DS 9대 업무에서 생성 및 활용되는 수치, DB 시스템, 파일 시스템 등 DS IT 자원을 활용하여 보관					
+Data Lake: DS data의 빠른 분석 및 데이터 provisioning 서비스 가능, 저비용/ 고효율 하둡 에코시스템을 기반으로 구축된 대용량 데이터 보관 인프라					
+Data Warehouse: Data lake 에 축적된 다양한 데이터 자원을 빠르게 추출 변환 통합함 비즈니스 목적에 맞도록 최적화된 디비 테이블로 저장된 디비 시스템					
+					
+데이터 원천: 반도체 fab 설비 / 인프라 설비, 센서/ legacy system / legacy DB					
+è  Data lake에 적제됨: 전처리 à 기준 정보 조합 à 압축 à HDFS, no SQL 기반 데이터 적재					
+è  (DB table로 변환) 빅데이터 클라우드내의 데이터 웨어하우스에 저장 à 분석 어플리케이션 서비스 / 데이터 api 서비스					
+					
+데이터 단계마다 데이터를 적재하는 주기가 다르기 때문에 발생한 데이터를 분석 어플리케이션에서 활용이 안될 수 있음					
+					
+분석앱 종류와 활용 방법					
+정형 분석: 특정 데이터와 분석 로직으로 결과 도출 (엔지니어링 상시 업무 자동화)					
+비정형 분석: 다양한 데이터를 사용하여 분석 목적에 맞게 분석 수행 (사용자 자율 분석에 용이함)					
+					
+MERGE TASK	"ALLOW_DUPLICATION: 중복 허용
+REMAIN_MAIN(or SUB)_TABLE"				
+					
+Save to Server					
+Shared	NO_SHARE/DEPARTMENT/ALL				
+REPORT	메일로 다른 사용자에게 공유: 예약으로 실행되는 경우에만 동작함				
