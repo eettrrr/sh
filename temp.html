@@ -1,0 +1,58 @@
+보통 machine learning을 학습할 때 다음의 2가지 방식을 생각해 볼 수 있음.
+
+1. supervised learning
+2. unsupervised learning
+
+니가 만드려는 recommendation system application을 예를 들어 설명해 볼게.
+
+target application을 다음과 같이 생각해보자.
+
+Given: 여러 user들이 작성한 SNS text data
+Goal: user들 중 니가 제공하는 서비스(게임?)에 관심이 있을만한 user를 찾아줌
+
+supervised learning을 사용하려면 각 user마다 label이 있어야 해.
+
+ex) user1 : 관심이 있음, user2 : 관심이 있음, ..... user151: 관심이 없음, user152: 관심이 없음......
+
+이러면 이 데이터를 통해 supervised machine learning 알고리즘을 사용해서 모델을 학습하고
+
+새로운 user가 들어오면 SNS text data를 갖고 이 user가 관심이 있는지 없는지 판별할 수 있겠지.
+
+그런데 user의 label을 만드는게 쉽지 않은 경우가 많아. 이럴 때 쓸수 있는데 unsupervised learning이야.
+
+unsupervised learning은 user마다 label 정보가 필요하지 않음.
+
+주어진 데이터를 보고 user를 비슷한 특성을 보이는 애들끼리 그룹화 시켜줘.
+
+그 그룹화 정보를 통해서 니 서비스를 사용하는 user가 많은 그룹의 다른 user들한테 추천해 주면 추천 성능이 좋겠지.
+
+
+
+그럼 이때 필요한 기술들이 뭐가 있냐인데
+
+일단 user의 SNS text data 에서 알고리즘을 적용할 수 있게 feature를 추출해주는 기술이 필요해.
+
+이게 예전에는 PLSI, LDA 기법 등을 사용했는데 deep learning이 나오면서 word2vec 기술이 많이 사용됨.
+
+https://ppasupat.github.io/a9online/1140.html (아래는 PLSI랑 LDA 알고리즘만 나와 있는 링크)
+https://towardsdatascience.com/topic-modeling-and-latent-dirichlet-allocation-in-python-9bf156893c24 (파이썬 통해서 LDA 구현하는 법)
+https://ratsgo.github.io/from%20frequency%20to%20semantics/2017/07/09/lda/ (한글)
+https://ratsgo.github.io/natural%20language%20processing/2017/03/08/word2vec/ (파이썬 통해서 word2vec 구현)
+
+위의 기법은 supervised learning 이나 unsupervised learning이나 모두 사용 가능함. (어쨌든 text data를 알고리즘이 이해할 수 있는 feature vector로 만들어 줘야 하니까)
+
+supervised learning algorithm은 과거엔 support vector machine이 많이 사용됐는데 요즘은 deep learning이 뜨면서 artificial neural network이 많이 사용됨.
+
+https://imasoftwareengineer.tistory.com/81 (ANN python example)
+https://frhyme.github.io/python-lib/keras-nn/ (python library keras 이용해서 ANN 학습)
+https://yamalab.tistory.com/40 (SVM python example)
+
+unsupervised learning algorithm은 K means clustering이나 DBscan 같은걸 사용함.
+
+https://nonmeyet.tistory.com/entry/Python-Kmeans-clustering-%EA%B5%AC%ED%98%84 (kmean clustering python example)
+https://bcho.tistory.com/1205 (DBSCAN python example)
+
+
+사실 지금 feature를 추출하는 부분하고 algorithm 을 학습하는 부분을 분리하는 방식을 설명했는데 deep learning을 사용하면서 그냥 그걸 하나의 ANN로 학습하는 경우도 있어.
+
+이런건 관련 논문이 너무 많고 뭐가 성능이 제일 좋다, 이런걸 말하기가 힘들어서 reference를 주기가 힘드네...
